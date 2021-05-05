@@ -7,6 +7,7 @@ import Main from './Components/Main'
 
 function App() {
   return (<NewGame />);
+
 }
 
 export default App;

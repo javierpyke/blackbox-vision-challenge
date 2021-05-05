@@ -6,12 +6,7 @@ import Main from './Components/Main'
 
 
 function App() {
-  return (
-    <>
-      <Route exact path="/"><Main /></Route>
-      <Route exact path="/game"><NewGame /></Route>
-    </>
-  );
+  return (<NewGame />);
 }
 
 export default App;

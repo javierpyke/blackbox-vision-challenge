@@ -112,8 +112,8 @@ function Game() {
       <Spinner
         thickness="4px"
         speed="0.65s"
-        emptyColor="#7025B3"
-        color="#4FD1C5"
+        emptyColor="#40B3A2"
+        color="#64ede9"
         size="xl"
       />
     )

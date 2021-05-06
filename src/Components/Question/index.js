@@ -11,7 +11,8 @@ export default function Question(props){
       borderRadius='10px'
       boxShadow='0px 3px 12px rgba(0, 0, 0, 0.25)'
       border='1px solid #2F855A'
-      height='500px'>
+      height='500px'
+      textAlign='center'>
       <Box>
         <Box textAlign='left'>
           <Badge colorScheme="purple" whiteSpace='normal' textAlign='start'>

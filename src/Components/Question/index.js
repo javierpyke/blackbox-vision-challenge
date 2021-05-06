@@ -2,7 +2,6 @@ import { Badge, Stat, StatNumber,StatHelpText,Box } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 
 export default function Question(props){
-
   return(
     <Box
       margin='0 auto'

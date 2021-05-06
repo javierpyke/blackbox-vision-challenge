@@ -1,13 +1,13 @@
-import {useState,useEffect} from 'react';
-import Question from '../../Components/Question'
-import getQuestions from '../../api.js'
 import {Button, Box, useToast, Spinner, Text} from '@chakra-ui/react'
-import Answers from '../../Components/Answers'
-import Finish from '../../Components/Finish'
+import getQuestions from '../../Resources/api.js'
+import { useState , useEffect } from 'react';
+import Question from '../Question'
+import Answers from '../Answers'
+import Finish from '../Finish'
 
 
 
-function NewGame() {
+function Game() {
 
   const toast = useToast()
   const questionsColors = ['teal','pink','purple','linkedin']
@@ -17,7 +17,6 @@ function NewGame() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers,setAnswers] = useState([])
   const [disabled, setDisabled] = useState(false)
-  const [result,setResult] = useState()
   const [difficulty,setDifficulty] = useState(0)
        
   useEffect(() => {
@@ -169,4 +168,4 @@ function NewGame() {
   );
 }
 
-export default NewGame;
+export default Game;

@@ -1,18 +1,31 @@
-import './questions.css'
 import { Badge, Stat, StatNumber,StatHelpText,Box } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 
 export default function Question(props){
 
   return(
-    <div className='question'>
-      <div className='head'>
-        <div className='dataQuestion'>
-          <Badge colorScheme="purple" whiteSpace= 'normal' textAlign='start'>
-            {props.category}
+    <Box
+      margin='0 auto'
+      padding='20px'
+      width='350px'
+      backgroundColor='rgb(255, 255, 255)'
+      borderRadius='10px'
+      boxShadow='0px 3px 12px rgba(0, 0, 0, 0.25)'
+      border='1px solid #2F855A'
+      height='500px'>
+      <Box>
+        <Box textAlign='left'>
+          <Badge colorScheme="purple" whiteSpace='normal' textAlign='start'>
+              {props.category}
           </Badge>
+        </Box>
+        <Box
+          display='flex'
+          justifyContent='space-between'
+          width='100%'
+          textAlign='left'>
           <Stat textAlign='left' w='50%'>
-            <StatNumber><span style={{color:'orange', fontSize:'40px'}}>{props.currentQuestion+1}</span><span style={{fontSize:'12px'}}> / {props.totalQuestions}</span></StatNumber>
+            <StatNumber mb='-10px'><span style={{color:'orange', fontSize:'40px'}}>{props.currentQuestion+1}</span><span style={{fontSize:'12px'}}> / {props.totalQuestions}</span></StatNumber>
             <StatHelpText>
               <Box fontWeight="semibold" fontSize="xs" d="flex" mt="2" alignItems="center">
                 {Array(3)
@@ -26,12 +39,19 @@ export default function Question(props){
               </Box>
             </StatHelpText>
           </Stat>
-        </div>
-        <div className='score'>
-          <span style={{color:'#4FD1C5', fontSize:'90px'}}>{props.score}</span><span style={{fontSize:'20px'}}> pts.</span>
-        </div>
-      </div>       
+          <Box
+            color='#4FD1C5'
+            fontSize='80px'
+            margin='0'
+            padding='0'
+            lineHeight='70px'>
+            <span className="score">{props.score}</span>
+            <span style={{fontSize:'20px'}}> pts.</span>
+          </Box>
+        </Box>
+        
+      </Box>       
       {props.children}
-    </div>
+    </Box>
     )
 }

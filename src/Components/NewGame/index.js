@@ -1,17 +1,16 @@
 import {useState,useEffect} from 'react';
 import Question from '../../Components/Question'
-import EndGame from '../../Components/EndGame';
 import getQuestions from '../../api.js'
-import {Button, Box, useToast, Spinner} from '@chakra-ui/react'
+import {Button, Box, useToast, Spinner, Text} from '@chakra-ui/react'
 import Answers from '../../Components/Answers'
 import Finish from '../../Components/Finish'
-import { Skeleton, SkeletonCircle, SkeletonText, Stack } from "@chakra-ui/react"
+
 
 
 function NewGame() {
 
   const toast = useToast()
-  const questionsColors = ['red.500','orange.500','green.500','cyan.500']
+  const questionsColors = ['teal','pink','purple','linkedin']
   const [status,setStatus] = useState('loading')
   const [score,setScore] = useState(0)
   const [questions,setQuestions] = useState([]);
@@ -19,10 +18,7 @@ function NewGame() {
   const [answers,setAnswers] = useState([])
   const [disabled, setDisabled] = useState(false)
   const [result,setResult] = useState()
-
   const [difficulty,setDifficulty] = useState(0)
-
-  
        
   useEffect(() => {
     getQuestions()
@@ -94,7 +90,7 @@ function NewGame() {
         title: 'Correcto',
         status: 'success',
         variant: "left-accent",
-        duration: 2000,
+        duration: 1000,
         isClosable: true,
         onCloseComplete:	(() => nextQuestion()),
       })
@@ -104,7 +100,7 @@ function NewGame() {
         description: 'La respuesta correcta es: '+questions[currentQuestion].correct_answer,
         status: 'error',
         variant: "left-accent",
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
         onCloseComplete:	(() => nextQuestion()),
       }) 
@@ -126,13 +122,15 @@ function NewGame() {
 
   if(status === 'finish'){
     return(
-      <Finish score={score} />
+      <Finish score={score}>
+        <Text>¡El juego ha terminado!</Text>
+        <Text>Tu puntaje final es:</Text>
+      </Finish> 
     )
   }
 
 
   return (
-    <div className='App'>
       <Question
         score={score}
         currentQuestion={currentQuestion}
@@ -140,16 +138,17 @@ function NewGame() {
         category={questions[currentQuestion].category}
         difficulty={difficulty}>
         <Box
-          bgGradient="linear(to-b, purple.500, purple.600)"
+          bgColor='#F6E05E'
+          borderColor='#ECC94B'
+          border='1px solid #ECC94B'
           m='1'
-          mb='20px'
-          p='30px 10px 30px'
+          mb='10px'
+          p='20px 10px 20px'
           fontWeight="semibold"
           as="h4"
           lineHeight="tight"
-          color='white'
-          borderRadius='10'
-        >
+          color='#1A202C'
+          borderRadius='10'>
           {questions[currentQuestion].question.replaceAll("&quot;",'"').replaceAll("&#039;","'")}
         </Box>
         <Answers>
@@ -157,16 +156,16 @@ function NewGame() {
           <Button
             w='80%'
             m='3px'
-            backgroundColor={questionsColors[i]}
+            colorScheme={questionsColors[i]}
+            variant="solid"            
             key={i}
             onClick={() => checkAnswer(answer)}
-            disabled={disabled}>
-              {answer}
-            </Button>)}
+            isDisabled={disabled}>
+              <Text isTruncated>{answer}</Text>
+          </Button>  
+          )}
         </Answers>
       </Question>
-    </div>
-
   );
 }
 
